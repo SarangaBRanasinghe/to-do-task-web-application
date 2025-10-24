@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 
-// ➕ Create a new task
+//Create a new task
 router.post('/', async (req, res) => {
   const { title, description } = req.body;
   try {
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 📋 Get latest 5 incomplete tasks
+// Get latest 5 incomplete tasks
 router.get('/', async (req, res) => {
   try {
     const [tasks] = await db.execute(
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ Mark a task as done
+//Mark a task as done
 router.put('/:id/done', async (req, res) => {
   const { id } = req.params;
   try {
