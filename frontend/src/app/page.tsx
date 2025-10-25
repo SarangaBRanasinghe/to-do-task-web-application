@@ -21,8 +21,9 @@ export default function TodoApp() {
   useEffect(() => {
     const loadTasks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tasks");
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`);
         const data = await res.json();
+        console.log('Fetched tasks:', data);
         Promise.resolve().then(() => setTasks(data));
       } catch (error) {
         console.error("Failed to fetch tasks:", error);
@@ -60,7 +61,7 @@ export default function TodoApp() {
     }
     setLoading(true);
     
-    fetch("http://localhost:5000/api/tasks", {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title, description }),
@@ -76,7 +77,7 @@ export default function TodoApp() {
           timer: 2000,
           timerProgressBar: true,
         });
-        return fetch("http://localhost:5000/api/tasks");
+        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`);
       })
       .then((res) => res.json())
       .then((data) => setTasks(data))
@@ -94,7 +95,7 @@ export default function TodoApp() {
 
   // Mark task as done
   const markAsDone = (id: number, taskTitle: string) => {
-    fetch(`http://localhost:5000/api/tasks/${id}/done`, {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks/${id}/done`, {
       method: "PUT",
     })
       .then(() => {
@@ -106,7 +107,7 @@ export default function TodoApp() {
           timer: 2000,
           timerProgressBar: true,
         });
-        return fetch("http://localhost:5000/api/tasks");
+        return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`);
       })
       .then((res) => res.json())
       .then((data) => setTasks(data))
