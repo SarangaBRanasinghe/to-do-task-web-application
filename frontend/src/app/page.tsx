@@ -20,7 +20,7 @@ export default function TodoApp() {
   const [loading, setLoading] = useState(false);
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
 
-  // Fetch tasks
+ 
   useEffect(() => {
     const loadTasks = async () => {
       try {
@@ -41,7 +41,7 @@ export default function TodoApp() {
     loadTasks();
   }, []);
 
-  // Add task
+  
   const addTask = (e?: React.SyntheticEvent) => {
     e?.preventDefault();
     if (!title.trim()) {

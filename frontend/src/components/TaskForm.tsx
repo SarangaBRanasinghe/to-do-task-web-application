@@ -31,13 +31,13 @@ export const TaskForm: React.FC<TaskFormProps> = ({ onSubmit, isLoading }) => {
       return;
     }
 
-    // Clear errors if valid
+ 
     setErrors({});
     
-    // Submit
+  
     await onSubmit({ title, description });
     
-    // Reset form
+ 
     setTitle('');
     setDescription('');
   };
