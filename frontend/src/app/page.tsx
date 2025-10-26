@@ -2,14 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-
-interface Task {
-  id: number;
-  title: string;
-  description: string;
-  is_completed: boolean;
-  created_at: string;
-}
+import { Task } from "@/types/task.types";
 
 const taskColors = [
   { bg: 'bg-gradient-to-br from-purple-50 to-purple-100', border: 'border-purple-500', accent: 'bg-purple-500', hover: 'hover:shadow-purple-200' },
